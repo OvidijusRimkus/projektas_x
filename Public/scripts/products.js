@@ -14,67 +14,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponent('header-placeholder', '/Public/components/header.html');
     await loadComponent('footer-placeholder', '/Public/components/footer.html');
 
-
-
-// Funkcija: Dropdown meniu logika
-function initializeDropdownMenu() {
-    const productsLink = document.getElementById("products-link");
-    if (productsLink) {
-        const dropdownMenu = document.querySelector(".dropdown-menu");
-
-        productsLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            dropdownMenu.style.display =
-                dropdownMenu.style.display === "block" ? "none" : "block";
-        });
-
-        document.addEventListener("click", (e) => {
-            if (!e.target.closest(".dropdown")) {
-                dropdownMenu.style.display = "none";
-            }
-        });
-    }
-}
-
-// Inicializuojame funkcijas po komponentų įkėlimo
-initializeDropdownMenu();
-initializeCartLogic();
-loadCategories(); // Pakeista iš loadProducts į loadCategories
 });
 
-// Funkcija: Įkelti kategorijas
-async function loadCategories() {
-const categories = [
-    { id: "sampunai", name: "Šampūnai", description: "Šampūnai visų tipų plaukams." },
-    { id: "kondicionieriai", name: "Kondicionieriai", description: "Kondicionieriai jūsų plaukų priežiūrai." }
-];
-
-const categoriesContainer = document.getElementById('categories-container');
-
-if (categoriesContainer) {
-    categories.forEach(category => {
-        const categoryCard = document.createElement('div');
-        categoryCard.classList.add('category-card');
-        categoryCard.innerHTML = `
-            <h3>${category.name}</h3>
-            <p>${category.description}</p>
-            <a href="${category.id}.html">Peržiūrėti produktus</a>
-        `;
-        categoriesContainer.appendChild(categoryCard);
-    });
-} else {
-    console.error("Nepavyko rasti elemento su klase 'categories-container'.");
-}
-}
-
-
- 
-
-// Funkcija: Įkelti produktus iš API
-async function loadProducts() {
+document.addEventListener("DOMContentLoaded", async () => {
     const currentPage = window.location.pathname.split("/").pop().replace(".html", "");
     const apiUrl = `/Public/src/api/${currentPage}.json`;
 
+    
     console.log('Dabartinis puslapis:', currentPage);
 
     try {
@@ -85,7 +31,7 @@ async function loadProducts() {
 
         if (data.category && data.category.products) {
             const products = data.category.products;
-            const productContainer = document.querySelector(".product-container");
+            const productContainer = document.querySelector(".products-container");
 
             if (productContainer) {
                 // Sukuriame produktų korteles
@@ -119,4 +65,4 @@ async function loadProducts() {
     } catch (error) {
         console.error("API klaida:", error);
     }
-}
+});

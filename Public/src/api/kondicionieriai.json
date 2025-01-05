@@ -1,0 +1,30 @@
+{
+    "category": {
+        "id": "kondicionieriai",
+        "name": "Kondicionieriai",
+        "description": "Kondicionieriai jūsų plaukų priežiūrai.",
+        "products": [
+            {
+                "id": 4,
+                "name": "ALAMA, REPAIR, struktūrą atkuriantis kondicionierius pažeistiems ir gležniems plaukams, 300 ml",
+                "price": 8.99,
+                "image": "/Public/assets/products/kondicionierius1.jpg",
+                "description": "Sausiems ir pazeistiems plaukams."
+            },
+            {
+                "id": 5,
+                "name": "CHI LUXURY, BLACK SEED OIL, drėgmę atstatantis kondicionierius, 739 ml",
+                "price": 25.99,
+                "image": "/Public/assets/products/kondicionierius2.jpg",
+                "description": "Suteikia glotnumo."
+            },
+            {
+                "id": 6,
+                "name": "OLAPLEX, No.5 BOND MAINTENANCE, plaukų kondicionierius, 250 ml",
+                "price": 29.99,
+                "image": "/Public/assets/products/kondicionierius3.jpg",
+                "description": "Drėkina plaukus."
+            }
+        ]
+    }
+}

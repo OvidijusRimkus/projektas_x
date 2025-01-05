@@ -1,3 +1,5 @@
+
+
 // Funkcija: Inicializuoti krepšelio logiką
 function initializeCartLogic() {
     const cartIcon = document.getElementById("open-cart"); // Krepšelio mygtukas
@@ -138,26 +140,22 @@ function updateCartCount() {
 
 // Funkcija: Pridėti produktą į krepšelį
 function addToCart(productId) {
+    console.log(`Pridedamas produktas su ID: ${productId}`);
     const apiUrl = "/Public/src/api/products.json"; // API kelias
 
     fetch(apiUrl)
         .then(response => {
-            console.log('Response status:', response.status);
             if (!response.ok) {
                 throw new Error(`Klaida: ${response.status} (${response.statusText})`);
             }
             return response.json();
         })
         .then(data => {
-            console.log('Gauti duomenys:', data);
             const product = data.categories.sampunai.find(item => item.id === parseInt(productId));
-            console.log('Rastas produktas:', product);
 
             if (product) {
                 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-                console.log('Esamas krepšelis:', cart);
                 const existingProduct = cart.find(item => item.id === product.id);
-                console.log('Esamas produktas krepšelyje:', existingProduct);
 
                 if (existingProduct) {
                     existingProduct.quantity += 1; // Jei produktas jau yra, didiname kiekį
@@ -174,8 +172,6 @@ function addToCart(productId) {
                 localStorage.setItem("cart", JSON.stringify(cart));
                 updateCartCount();
                 renderCartItems(); // Atnaujiname krepšelį
-                console.log(`Produktas "${product.name}" pridėtas į krepšelį.`);
-                console.log('Atnaujintas krepšelis:', JSON.parse(localStorage.getItem("cart")));
             } else {
                 console.error("Produktas nerastas API duomenyse.");
             }

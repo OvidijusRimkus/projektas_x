@@ -1,0 +1,49 @@
+<header id="header">
+    <nav>
+        <ul>
+            <li><a href="/Public/index.html">Pradzia</a></li>
+            <li class="dropdown">
+            <a href="#" id="products-link">Produktai</a>
+            <ul class="dropdown-menu">
+                <li><a href="../Public/pages/veidui.html">Veidui</a></li>
+                <li><a href="../Public/pages/kunui.html">Kunui</a></li>
+                <li><a href="/Public/pages/lupoms.html">Lupoms</a></li>
+                <li><a href="/Public/pages/plaukams.html">Plaukams</a></li>
+                <li><a href="/Public/pages/aksesuarai.html">Aksesuarai</a></li>
+                <li><a href="/Public/pages/specialioji.html">Specialioji prieziura</a></li>
+            </ul>
+            <li><a href="/Public/pages/Kontaktai.html">Kontaktai</a></li>
+        </ul>
+    </nav>
+    <a href="index.html" id="logo-container">
+        <img src="/Public/assets/images/logo.png" alt="Ovify logotipas" id="logo">
+    </a>
+    <form id="search-form">
+        <input
+        type="text"
+        id="search-bar"
+        placeholder="Ieskokite tarp 1000 prekiu"
+        autocomplete="off"
+        >
+    </form>
+    <div class="cart">
+        <div id="open-cart">
+            <img src="/Public/assets/images/cart-icon.png" alt="Krepšelis">
+            <span id="cart-count">0</span>
+        </div>
+    </div>
+    </div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Krepšelis</h2>
+            <span id="close-cart" class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <!-- Produktai bus dinamiškai įkelti per JavaScript -->
+        </div>
+        <div class="cart-summary">
+            <p>Iš viso: <span id="total-price">0.00 €</span></p>
+            <a href="/Public/pages/atsiskaitymas.html"><button id="checkout-btn">Apmokėti</button></a>
+        </div>
+    </div>
+</header>

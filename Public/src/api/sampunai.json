@@ -6,6 +6,7 @@
       "products": [
           {
               "id": 1,
+              "type": "sampunas",
               "name": "SYOSS, REPAIR, sampunas, 440 ml",
               "price": 4.19,
               "image": "/Public/assets/Products/sampunas1.jpg",
@@ -13,6 +14,7 @@
           },
           {
               "id": 2,
+              "type": "sampunas",
               "name": "HEAD & SHOULDERS, APPLE FRESH, šampūnas, 400 ml",
               "price": 6.69,
               "image": "/Public/assets/products/sampunas2.jpg",
@@ -20,6 +22,7 @@
           },
           {
               "id": 3,
+              "type": "sampunas",
               "name": "GLISS, ULTIMATE REPAIR, šampūnas, 250 ml",
               "price": 3.39,
               "image": "/Public/assets/products/sampunas3.jpg",
@@ -27,6 +30,7 @@
           },
           {
               "id": 4,
+              "type": "sampunas",
               "name": "TIGI, BED HEAD FOR MEN, vyriškas šampūnas, 250 ml",
               "price": 10.39,
               "image": "/Public/assets/products/sampunas4.jpg",
@@ -34,6 +38,7 @@
           },
           {
               "id": 5,
+              "type": "sampunas",
               "name": "HELEN SEWARD, SYNEBI, apimties suteikiantis šampūnas, 300 ml",
               "price": 13.99,
               "image": "/Public/assets/products/sampunas5.jpg",
@@ -41,6 +46,7 @@
           },
           {
               "id": 6,
+              "type": "sampunas",
               "name": "TIGI, SERIAL BLONDE, šampūnas su keratinu ir amino rūgštimi, 400 ml",
               "price": 18.29,
               "image": "/Public/assets/products/sampunas6.jpg",

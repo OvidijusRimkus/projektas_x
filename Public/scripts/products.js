@@ -88,7 +88,3 @@ async function loadProducts() {
     }
 }
 
-// Funkcija: Pridėti produktą į krepšelį
-function addToCart(productId) {
-    // Čia pridėkite logiką, kaip pridėti produktą į krepšelį
-}

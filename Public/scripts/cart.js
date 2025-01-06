@@ -25,6 +25,9 @@ function initializeCartLogic() {
                 cartSidebar.classList.remove("active");
             }
         });
+
+        // Atnaujinti krepšelio elementų skaičių
+        updateCartCount();
     } else {
         console.error("Nepavyko rasti vieno ar daugiau elementų (open-cart, cart-sidebar, close-cart).");
     }
@@ -34,6 +37,7 @@ function initializeCartLogic() {
     function renderCartItems() {
         const cartItemsContainer = document.querySelector(".cart-items");
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        console.log('Krepšelio turinys:', cart);
         cartItemsContainer.innerHTML = ""; // Išvalome esamą turinį
     
         if (cart.length === 0) {
@@ -48,13 +52,13 @@ function initializeCartLogic() {
                     <div class="cart-item-details">
                         <h3>${item.name}</h3>
                         <div class="quantity-controls">
-                            <button class="decrease-quantity" data-id="${item.id}">-</button>
+                            <button class="decrease-quantity" data-id="${item.id}" data-type="${item.type}">-</button>
                             <span>${item.quantity}</span>
-                            <button class="increase-quantity" data-id="${item.id}">+</button>
+                            <button class="increase-quantity" data-id="${item.id}" data-type="${item.type}">+</button>
                         </div>
                         <p>Kaina: ${(item.price * item.quantity).toFixed(2)} €</p>
                     </div>
-                    <button class="remove-item" data-id="${item.id}">&times;</button>
+                    <button class="remove-item" data-id="${item.id}" data-type="${item.type}">&times;</button>
                 `;
     
                 cartItemsContainer.appendChild(cartItem);
@@ -64,7 +68,8 @@ function initializeCartLogic() {
             document.querySelectorAll(".remove-item").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;
-                    removeFromCart(productId);
+                    const productType = e.target.dataset.type;
+                    removeFromCart(productId, productType);
                 });
             });
     
@@ -72,7 +77,8 @@ function initializeCartLogic() {
             document.querySelectorAll(".increase-quantity").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;
-                    changeQuantity(productId, 1);
+                    const productType = e.target.dataset.type;
+                    changeQuantity(productId, productType, 1);
                 });
             });
     
@@ -80,7 +86,8 @@ function initializeCartLogic() {
             document.querySelectorAll(".decrease-quantity").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;
-                    changeQuantity(productId, -1);
+                    const productType = e.target.dataset.type;
+                    changeQuantity(productId, productType, -1);
                 });
             });
         }
@@ -89,9 +96,9 @@ function initializeCartLogic() {
     }
 
         // Funkcija pakeisti produkto kiekį
-        function changeQuantity(productId, change) {
+        function changeQuantity(productId, productType, change) {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            const product = cart.find(item => item.id === parseInt(productId));
+            const product = cart.find(item => item.id === parseInt(productId) && item.type === productType);
         
             if (product) {
                 product.quantity += change;
@@ -105,9 +112,9 @@ function initializeCartLogic() {
         }
 
 // Funkcija pašalinti produktą iš krepšelio
-function removeFromCart(productId) {
+function removeFromCart(productId, productType) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart = cart.filter(item => item.id !== parseInt(productId)); // Pašaliname produktą pagal ID
+    cart = cart.filter(item => item.id !== parseInt(productId) || item.type !== productType); // Pašaliname produktą pagal ID ir tipą
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     renderCartItems(); // Atnaujiname krepšelį
@@ -138,10 +145,15 @@ function updateCartCount() {
     }
 }
 
-// Funkcija: Pridėti produktą į krepšelį
+function getApiUrl() {
+    const currentPage = window.location.pathname.split("/").pop().replace(".html", "");
+    return `/Public/src/api/${currentPage}.json`;
+}
+
+//Funkcija prideti i krepseli
 function addToCart(productId) {
     console.log(`Pridedamas produktas su ID: ${productId}`);
-    const apiUrl = "/Public/src/api/products.json"; // API kelias
+    const apiUrl = getApiUrl(); // Naudojame dinamiškai nustatytą API kelią
 
     fetch(apiUrl)
         .then(response => {
@@ -151,29 +163,35 @@ function addToCart(productId) {
             return response.json();
         })
         .then(data => {
-            const product = data.categories.sampunai.find(item => item.id === parseInt(productId));
+            console.log('Gauti duomenys iš API:', data);
+            if (data.category && data.category.products) {
+                const product = data.category.products.find(item => item.id === parseInt(productId));
 
-            if (product) {
-                let cart = JSON.parse(localStorage.getItem("cart")) || [];
-                const existingProduct = cart.find(item => item.id === product.id);
+                if (product) {
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    const existingProduct = cart.find(item => item.id === product.id && item.type === product.type);
 
-                if (existingProduct) {
-                    existingProduct.quantity += 1; // Jei produktas jau yra, didiname kiekį
+                    if (existingProduct) {
+                        existingProduct.quantity += 1; // Jei produktas jau yra, didiname kiekį
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            type: product.type,
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            quantity: 1
+                        });
+                    }
+
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    updateCartCount();
+                    renderCartItems(); // Atnaujiname krepšelį
                 } else {
-                    cart.push({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        image: product.image,
-                        quantity: 1
-                    });
+                    console.error("Produktas nerastas API duomenyse.");
                 }
-
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartCount();
-                renderCartItems(); // Atnaujiname krepšelį
             } else {
-                console.error("Produktas nerastas API duomenyse.");
+                console.error("Kategorija 'products' nerasta API duomenyse.");
             }
         })
         .catch(error => console.error("Klaida gaunant API duomenis:", error));

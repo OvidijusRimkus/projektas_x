@@ -48,23 +48,28 @@ function initializeCartLogic() {
                 cartItem.classList.add("cart-item");
     
                 cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <h3>${item.name}</h3>
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <div class="price-and-quantity">
+                        <div class="price-info">
+                            <p>Vieneto kaina: <span>${item.price.toFixed(2)} €</span></p>
+                            <p>Bendra kaina: <span>${(item.price * item.quantity).toFixed(2)} €</span></p>
+                        </div>
                         <div class="quantity-controls">
                             <button class="decrease-quantity" data-id="${item.id}" data-type="${item.type}">-</button>
                             <span>${item.quantity}</span>
                             <button class="increase-quantity" data-id="${item.id}" data-type="${item.type}">+</button>
                         </div>
-                        <p>Kaina: ${(item.price * item.quantity).toFixed(2)} €</p>
                     </div>
-                    <button class="remove-item" data-id="${item.id}" data-type="${item.type}">&times;</button>
-                `;
+                </div>
+                <button class="remove-item" data-id="${item.id}" data-type="${item.type}">&times;</button>
+            `;
     
                 cartItemsContainer.appendChild(cartItem);
             });
     
-            // Kiekvienam mygtukui "Pašalinti" pridedame įvykio klausytuvą
+            // Pridėti įvykių klausytojus mygtukams
             document.querySelectorAll(".remove-item").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;
@@ -73,7 +78,6 @@ function initializeCartLogic() {
                 });
             });
     
-            // Kiekvienam mygtukui "Padidinti kiekį" pridedame įvykio klausytuvą
             document.querySelectorAll(".increase-quantity").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;
@@ -82,7 +86,6 @@ function initializeCartLogic() {
                 });
             });
     
-            // Kiekvienam mygtukui "Sumažinti kiekį" pridedame įvykio klausytuvą
             document.querySelectorAll(".decrease-quantity").forEach(button => {
                 button.addEventListener("click", (e) => {
                     const productId = e.target.dataset.id;

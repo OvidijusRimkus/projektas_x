@@ -44,33 +44,80 @@ nav ul li a {
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: linear-gradient(to bottom, #ccc0ad, #b17f7f);
-    padding: 0;
     list-style: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px;
 }
 
 .dropdown-menu li {
-    margin: 0;
+    padding: 5px 10px;
 }
 
 .dropdown-menu li a {
-    color: white;
-    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
     display: block;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
 
 .dropdown-menu li a:hover {
-    background-color: #555;
+    background-color: #f0f0f0;
 }
 
 .dropdown:hover{
     display: block;
 }
+
+/* Submeniu */
+.subcategory-menu {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Rodyti submeniu šalia pagrindinio meniu */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Paslėptas pagal numatytuosius nustatymus */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Submeniu elementai */
+.subcategory-menu li {
+    padding: 10px 15px;
+}
+
+.subcategory-menu li a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.subcategory-menu li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Rodyti submeniu užvedus pelę */
+.dropdown-category:hover .subcategory-menu:hover {
+    display: block;
+}
+
+/* Submeniu rodomas šalia pagrindinio elemento */
+.dropdown-category {
+    position: relative;
+}
+
 
 header {
     background: linear-gradient(to right, #ccc0ad, #b17f7f);

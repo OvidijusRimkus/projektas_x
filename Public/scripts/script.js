@@ -87,9 +87,9 @@ function initializeDropdownMenu() {
                 subcategoryMenu.style.display = "block";
             });
             subcategoryMenu.addEventListener("mouseover", () => {
-                subcategoryMenu.style.display = "block";
-                console.log("Mouseover on subcategory menu, keep it shown");
-            });
+                    subcategoryMenu.style.display = "block";
+                    console.log("Mouseover on subcategory menu, keep it shown");
+                });
 
             // Paslėpiame submeniu, kai pelė yra patraukiama nuo "Plaukams"
             plaukamsLink.addEventListener("mouseleave", () => {
@@ -104,3 +104,4 @@ function initializeDropdownMenu() {
 document.addEventListener("DOMContentLoaded", () => {
     initializeDropdownMenu();
 });
+

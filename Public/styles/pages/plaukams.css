@@ -1,10 +1,10 @@
 .categories-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
     gap: 20px;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    justify-content: center;
 }
 
 .category-card {
@@ -15,6 +15,7 @@
     padding: 20px;
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 200px;
 }
 
 .category-card:hover {
@@ -103,8 +104,7 @@
 
 /* Tinklelio stilius */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start; /* Kortelės išsidėstys iš kairės į dešinę */

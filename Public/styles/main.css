@@ -5,17 +5,23 @@
 }
 
 main {
+    flex-grow: 1;
     padding: 20px;
-    text-align: center;
+}
+.main-content {
+    display: flex;
+    margin-top: 20px; /* Pridėkite margin, kad būtų po header */
 }
 
 main h2 {
     font-size: 28px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 main p {
     font-size: 18px;
+    text-align: center;
 }
 
 #categories {

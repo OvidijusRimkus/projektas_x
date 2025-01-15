@@ -8,58 +8,63 @@
         <link rel="stylesheet" href="/Public/styles/main.css">
         <link rel="stylesheet" href="/Public/styles/header.css">
         <link rel="stylesheet" href="/Public/styles/footer.css">
+        <link rel="stylesheet" href="/Public/styles/sidebar.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
-
-    <main id="main-content">
-        <div id="cart-sidebar" class="cart-sidebar">
-            <div class="cart-header">
-                <h2>Krepšelis</h2>
-                <span id="close-cart" class="close-cart">&times;</span>
+    <div class="main-content">
+        <div id="sidebar-placeholder"></div>
+        <main id="main-content">
+            <div id="cart-sidebar" class="cart-sidebar">
+                <div class="cart-header">
+                    <h2>Krepšelis</h2>
+                    <span id="close-cart" class="close-cart">&times;</span>
+                </div>
+                <div class="cart-items">
+                    <!-- Produktai bus dinamiškai įkelti -->
+                </div>
+                <div class="cart-summary">
+                    <p>Iš viso: <span id="total-price">0.00 €</span></p>
+                    <button id="checkout-btn">Apmokėti</button>
+                </div>
             </div>
-            <div class="cart-items">
-                <!-- Produktai bus dinamiškai įkelti -->
-            </div>
-            <div class="cart-summary">
-                <p>Iš viso: <span id="total-price">0.00 €</span></p>
-                <button id="checkout-btn">Apmokėti</button>
-            </div>
-        </div>
-        <h2>Welcome to OviFy</h2>
-        <p>Cia rasiste geriausius pasiulymus savo poreikiams!</p>
-        <section id="categories">
-            <h2>Musu produktai</h2>
-            <div class="category-grid">
-                <a href="/Public/pages/veidui.html" class="category-card">
-                    <img src="/Public/assets/images/face.jpg" alt="Veidui" class="category-image">
-                    <h3>Veidui</h3>
-                </a>
-                <a href="/Public/pages/plaukams.html" class="category-card">
-                    <img src="/Public/assets/images/hair.jpg" alt="Plaukams" class="category-image">
-                    <h3>Plaukams</h3>
-                </a>
-                <a href="/Public/pages/aksesuarai.html" class="category-card">
-                    <img src="/Public/assets/images/accessories.jpg" alt="Aksesuarai" class="category-image">
-                    <h3>Aksesuarai</h3>
-                </a>
-                <a href="/Public/pages/kunui.html" class="category-card">
-                    <img src="/Public/assets/images/kunui.jpg" alt="Kunui" class="category-image">
-                    <h3>Kunui</h3>
-                </a>
-                <a href="/Public/pages/lupoms.html" class="category-card">
-                    <img src="/Public/assets/images/lupoms.jpg" alt="Lupoms" class="category-image">
-                    <h3>Lupoms</h3>
-                </a>
-                <a href="/Public/pages/specialioji.html" class="category-card">
-                    <img src="/Public/assets/images/specialioji prieziura.jpg" alt="Specialioji prieziura" class="category-image">
-                    <h3>Specialioji prieziura</h3>
-                </a>
-            </div>
-        </section>
+            <h2>Welcome to OviFy</h2>
+            <p>Cia rasiste geriausius pasiulymus savo poreikiams!</p>
+            <section id="categories">
+                <h2>Musu produktai</h2>
+                <div class="category-grid">
+                    <a href="/Public/pages/veidui.html" class="category-card">
+                        <img src="/Public/assets/images/face.jpg" alt="Veidui" class="category-image">
+                        <h3>Veidui</h3>
+                    </a>
+                    <a href="/Public/pages/plaukams.html" class="category-card">
+                        <img src="/Public/assets/images/hair.jpg" alt="Plaukams" class="category-image">
+                        <h3>Plaukams</h3>
+                    </a>
+                    <a href="/Public/pages/aksesuarai.html" class="category-card">
+                        <img src="/Public/assets/images/accessories.jpg" alt="Aksesuarai" class="category-image">
+                        <h3>Aksesuarai</h3>
+                    </a>
+                    <a href="/Public/pages/kunui.html" class="category-card">
+                        <img src="/Public/assets/images/kunui.jpg" alt="Kunui" class="category-image">
+                        <h3>Kunui</h3>
+                    </a>
+                    <a href="/Public/pages/lupoms.html" class="category-card">
+                        <img src="/Public/assets/images/lupoms.jpg" alt="Lupoms" class="category-image">
+                        <h3>Lupoms</h3>
+                    </a>
+                    <a href="/Public/pages/specialioji.html" class="category-card">
+                        <img src="/Public/assets/images/specialioji prieziura.jpg" alt="Specialioji prieziura" class="category-image">
+                        <h3>Specialioji prieziura</h3>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
     <div id="footer-placeholder"></div>
     <script src="/Public/scripts/cart.js"></script>
     <script src="/Public/scripts/script.js"></script>
+    <script src="/Public/scripts/sidebar.js"></script>
     
 </body>
 </html>

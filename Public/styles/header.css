@@ -32,6 +32,7 @@ nav ul{
 nav ul li {
     position: relative;
     margin: 0 10px;
+    z-index: 100;
 }
 
 nav ul li a {
@@ -73,6 +74,10 @@ nav ul li a {
 
 .dropdown:hover{
     display: block;
+}
+
+.menu-category{
+    padding: 5px 20px;
 }
 
 /* Submeniu */

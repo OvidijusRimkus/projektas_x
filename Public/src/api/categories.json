@@ -7,6 +7,48 @@
       {
         "id": "kondicionieriai",
         "name": "Kondicionieriai"
+      },
+      {
+        "id": "Kaukes",
+        "name": "Kaukes"
+      },
+      {
+        "id": "Aliejai, serumai",
+        "name": "Aliejai,serumai"
       }
+    ],
+    "Veidui": [
+        {
+            "id": "Valikliai",
+            "name": "Valikliai"
+          },
+          {
+            "id": "Tonikai",
+            "name": "Tonikai"
+          },
+          {
+            "id": "Kremai",
+            "name": "Kremai"
+          },
+          {
+            "id": "Serumai",
+            "name": "Serumai"
+          },
+          {
+            "id": "Aliejai",
+            "name": "Aliejai"
+          },
+          {
+            "id": "Kaukes",
+            "name": "Kaukes"
+          },
+          {
+            "id": "Šveitikliai",
+            "name": "Šveitikliai"
+          },
+          {
+            "id": "Makiažas",
+            "name": "Makiažas"
+          }
     ]
   }
